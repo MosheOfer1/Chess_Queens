@@ -9,7 +9,7 @@ public class Logic {
         // Exit condition, if it has reached to the last column on the board
         if (column == Main.bord_size){
             solutionsCounter++;
-            //printBoard();
+            printBoard(bord);
             return;
         }
 
