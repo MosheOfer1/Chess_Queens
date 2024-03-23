@@ -13,20 +13,13 @@ public class Logic {
             return;
         }
 
-        // If you have reached to not an empty column, check for contradictions,
-        // and if all good send to the next column, else return.
         for (int i = 0; i < Main.bord_size; i++) {
-            if (bord[i][column]) {
-                if (checkBoard(i, column, bord)) {
+            if (bord[i][column]) // A queen is already there
+                if (checkBoard(i, column, bord)) // She is fine in her place, go on to the next column
                     placeQueensRecursive(column + 1, bord);
-                } else {
+                else // She is not fine in her spot, go back in the recursion
                     return;
-                }
-            }
-        }
-
-        for (int i = 0; i < Main.bord_size; i++) {
-            if (checkBoard(i, column, bord) && !bord[i][column]) {
+            else if (checkBoard(i, column, bord)) {
                 bord[i][column] = true;
                 placeQueensRecursive(column + 1, bord);
                 bord[i][column] = false;
